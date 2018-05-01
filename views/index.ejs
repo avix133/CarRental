@@ -1,0 +1,27 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/public/stylesheets/style.css"/>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <form name="form1" method="GET" action="/cars">
+        <table>
+            <tr>
+                <td>First name</td>
+                <td><input type="text" name="fname" ></td>
+            </tr>
+            <tr>
+                <td>last name</td>
+                <td><input type="text" name="lname" ></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Save" ></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+

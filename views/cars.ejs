@@ -1,0 +1,25 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<head>
+    <title><%= title %></title>
+    <!--<link rel="stylesheet" href="/public/stylesheets/style.css"/>-->
+
+    <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css" media="all">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script>
+		$(function() {
+			$('#datepick').datepicker();
+		});
+    </script>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <aside class="widget">
+        <p>Date: <input type="text" id="datepick"></p>
+    </aside>
+</body>
+</html>
+
