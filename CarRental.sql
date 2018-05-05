@@ -23,7 +23,8 @@ VALUES
   (4, "KRK 3333", 125),
   (2, "KRK 4444", 95),
   (5, "KRK 5555", 90),
-  (1, "KRK 6666", 85);
+  (1, "KRK 6666", 85),
+  (3, "KRK 7777", 90);
 
 INSERT INTO car_photo
   (car_id, photo)
