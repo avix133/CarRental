@@ -931,7 +931,7 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="229" name="model">
+    <column id="235" parent="229" name="car_type">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
@@ -958,7 +958,7 @@
       <Unique>1</Unique>
     </index>
     <index id="240" parent="229" name="car_car_type_model_id_fk">
-      <ColNames>model</ColNames>
+      <ColNames>car_type</ColNames>
     </index>
     <key id="241" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
@@ -974,10 +974,10 @@
       <UnderlyingIndexName>car_reg_no_uindex</UnderlyingIndexName>
     </key>
     <foreign-key id="244" parent="229" name="car_car_type_model_id_fk">
-      <ColNames>model</ColNames>
+      <ColNames>car_type</ColNames>
       <RefSchemaName>car_rental</RefSchemaName>
       <RefTableName>car_type</RefTableName>
-      <RefColNames>model_id</RefColNames>
+      <RefColNames>car_type_id</RefColNames>
     </foreign-key>
     <column id="245" parent="230" name="car_id">
       <Position>1</Position>
@@ -1010,7 +1010,7 @@
       <RefTableName>car</RefTableName>
       <RefColNames>car_id</RefColNames>
     </foreign-key>
-    <column id="251" parent="231" name="model_id">
+    <column id="251" parent="231" name="car_type_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
@@ -1033,16 +1033,16 @@
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="255" parent="231" name="car_type_model_id_uindex">
-      <ColNames>model_id</ColNames>
+      <ColNames>car_type_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="256" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>model_id</ColNames>
+      <ColNames>car_type_id</ColNames>
       <Primary>1</Primary>
     </key>
     <key id="257" parent="231" name="car_type_model_id_uindex">
-      <ColNames>model_id</ColNames>
+      <ColNames>car_type_id</ColNames>
       <UnderlyingIndexName>car_type_model_id_uindex</UnderlyingIndexName>
     </key>
     <column id="258" parent="232" name="rental_id">
@@ -1076,83 +1076,90 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="263" parent="232" name="rental_rental_id_uindex">
+    <column id="263" parent="232" name="accepted">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="264" parent="232" name="rental_rental_id_uindex">
       <ColNames>rental_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="264" parent="232" name="rental_car_uindex">
+    <index id="265" parent="232" name="rental_car_uindex">
       <ColNames>car</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="265" parent="232" name="rental_user_user_id_fk">
+    <index id="266" parent="232" name="rental_user_user_id_fk">
       <ColNames>user</ColNames>
     </index>
-    <key id="266" parent="232" name="PRIMARY">
+    <key id="267" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>rental_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="267" parent="232" name="rental_rental_id_uindex">
+    <key id="268" parent="232" name="rental_rental_id_uindex">
       <ColNames>rental_id</ColNames>
       <UnderlyingIndexName>rental_rental_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="268" parent="232" name="rental_car_uindex">
+    <key id="269" parent="232" name="rental_car_uindex">
       <ColNames>car</ColNames>
       <UnderlyingIndexName>rental_car_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="269" parent="232" name="rental_user_user_id_fk">
+    <foreign-key id="270" parent="232" name="rental_user_user_id_fk">
       <ColNames>user</ColNames>
       <RefSchemaName>car_rental</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>user_id</RefColNames>
     </foreign-key>
-    <foreign-key id="270" parent="232" name="rental_car_car_id_fk">
+    <foreign-key id="271" parent="232" name="rental_car_car_id_fk">
       <ColNames>car</ColNames>
       <RefSchemaName>car_rental</RefSchemaName>
       <RefTableName>car</RefTableName>
       <RefColNames>car_id</RefColNames>
     </foreign-key>
-    <column id="271" parent="233" name="user_id">
+    <column id="272" parent="233" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="233" name="name">
+    <column id="273" parent="233" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="233" name="surname">
+    <column id="274" parent="233" name="surname">
       <Position>3</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="233" name="email">
+    <column id="275" parent="233" name="email">
       <Position>4</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="233" name="password">
+    <column id="276" parent="233" name="password">
       <Position>5</Position>
       <DataType>char(40)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="276" parent="233" name="user_user_id_uindex">
+    <index id="277" parent="233" name="user_user_id_uindex">
       <ColNames>user_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="277" parent="233" name="PRIMARY">
+    <key id="278" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="278" parent="233" name="user_user_id_uindex">
+    <key id="279" parent="233" name="user_user_id_uindex">
       <ColNames>user_id</ColNames>
       <UnderlyingIndexName>user_user_id_uindex</UnderlyingIndexName>
     </key>

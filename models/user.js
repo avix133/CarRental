@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function (sequelize, DataTypes) {
-	const User = sequelize.define('user', {
+module.exports = (sequelize, DataTypes) => {
+	return sequelize.define('user', {
 		user_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 		name: DataTypes.STRING,
 		surname: DataTypes.STRING,
@@ -9,12 +9,6 @@ module.exports = function (sequelize, DataTypes) {
 		password: DataTypes.STRING,
 	}, {
 		tableName: 'user',
-		timestamps: false,
-		classMethods: {
-			associate: function (models) {
-
-			}
-		}
+		timestamps: false
 	});
-	return User;
 };

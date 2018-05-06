@@ -20,6 +20,14 @@
     <aside class="widget">
         <p>Date: <input type="text" id="datepick"></p>
     </aside>
+    <table>
+        <% for(var i=0; i < cars.length; i++) { %>
+        <tr>
+            <td><%= cars[i].reg_no %></td>
+            <td><%= cars[i].car_photo_fk.photo %></td>
+        </tr>
+        <% } %>
+    </table>
 </body>
 </html>
 
