@@ -23,29 +23,35 @@
         </nav>
     </header>
     <section>
-        <strong>Rented cars</strong>
+        <strong>Admin panel</strong>
     </section>
     <section id="pageContent">
-        <% for(var i=0; i < cars.length; i++) { %>
+        <% for(var i=0; i < rentals.length; i++) { %>
         <article>
-            <h1><%= cars[i].car_type_fk.mark %> <%= cars[i].car_type_fk.model %> (<%= cars[i].car_type_fk.year%>)</h1>
-            <br>
-            <img src="images/cars/<%= cars[i].car_photo_fk.photo %>" width="200" height="150">
-            <% if(cars[i].car_rental_fk.accepted) { %>
-                <label style="color:green;font-weight: bold">ACCEPTED</label>
-            <% } else { %>
-                <label style="color:blue">Waiting for confirmation..</label>
-            <% } %>
+
             <aside>
-                <p><%=new Date(cars[i].car_rental_fk.date_in).toDateString()%>
-                 - <%=new Date(cars[i].car_rental_fk.date_out).toDateString()%></p>
-                <form method="post" action="/rentals/modify/<%= cars[i].car_rental_fk.rental_id%>">
-                    <button style="height:60px;width:100px">Modify</button>
+                <form method="post" action="/modify/<%= rentals[i].rental_id%>">
+                    <button style="height:30px;width:60px">Modify</button>
                 </form>
-                <br><form method="post" action="/rentals/cancel/<%= cars[i].car_rental_fk.rental_id%>">
-                    <button style="height:60px;width:100px;color:red">Cancel</button>
+                <br><form method="post" action="/rentals/cancel/<%= rentals[i].rental_id%>">
+                    <button style="height:30px;width:60px;color:red">Cancel</button>
                 </form>
             </aside>
+            <h1>Id: <%= rentals[i].rental_id %></h1>
+            <br>
+            <i>Reg number: <%=rentals[i].rental_car_fk.reg_no%></i>
+            <br>
+            <% if(rentals[i].accepted) { %>
+            <label style="color:green;font-weight: bold">ACCEPTED</label>
+            <% } else { %>
+            <label style="color:blue">Waiting for confirmation..</label>
+            <% } %>
+            <br>
+            <br>
+            <form method="post" action="/admin/accept/<%= rentals[i].rental_id%>">
+                <button style="height:30px;width:150px;color:green">Accept</button>
+            </form>
+
         </article>
         <% } %>
     </section>

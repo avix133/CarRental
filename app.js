@@ -23,6 +23,7 @@ app.use('/rent', express.static(path.join(__dirname, 'public')));
 app.use('/rent/car', express.static(path.join(__dirname, 'public')));
 app.use('/rentals', express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'public')));
+app.use('/admin/accept', express.static(path.join(__dirname, 'public')));
 app.use('/modify', express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

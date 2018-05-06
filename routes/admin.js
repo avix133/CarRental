@@ -5,17 +5,26 @@ var db = require('../db');
 
 
 /* GET home page. */
-router.get('/:id', function (req, res) {
-	const rental_id = parseInt(req.params.id);
+router.get('/', function (req, res) {
 	db.rental.findAll({
-		include: [{model: db.carType, as: "car_type_fk"},
-			{model: db.carPhoto, as: "car_photo_fk"},
-			{model: db.rental, as: "car_rental_fk"}],
-		where: {rental_id: rental_id}
-
+		include: [{model:db.car, as:"rental_car_fk"}]
 	}).then(result => {
-		res.render('rentals', {title: 'CarRental', cars: result})
+		res.render('admin', {title: 'CarRental', rentals: result})
 	});
+});
+
+router.post('/accept/:id', function (req, res) {
+	console.log("Accept")
+	const rental_id = parseInt(req.params.id);
+	db.rental.findOne({
+		where: {rental_id: rental_id}
+	}).then(result => {
+		if (result) {
+			result.updateAttributes({
+				accepted: true
+			});
+			res.redirect('/admin');
+		}});
 });
 
 

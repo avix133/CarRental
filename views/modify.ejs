@@ -23,11 +23,22 @@
         </nav>
     </header>
     <section>
-        <strong>Rented cars</strong>
+        <strong>Modify</strong>
     </section>
     <section id="pageContent">
         <article>
-
+            <h1>Rental number: <%=rental.rental_id%></h1>
+        </article>
+        <article>
+            <% var date_in = new Date(rental.date_in) %>
+            <% var date_out = new Date(rental.date_out) %>
+            <form method="post" action="/modify/<%=rental.rental_id%>/dates">
+                <label for="receipt_date">Date of receipt:</label>
+                <input type="date" name="receipt_date" value=<%=date_in.toISOString().slice(0,10)%>>
+                <label for="return_date"> Date of return:</label>
+                <input type="date" name="return_date" value=<%=date_out.toISOString().slice(0,10)%>>
+                <input type="submit" value="Save">
+            </form>
         </article>
     </section>
 </body>

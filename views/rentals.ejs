@@ -30,7 +30,9 @@
         <article>
             <h1><%= cars[i].car_type_fk.mark %> <%= cars[i].car_type_fk.model %> (<%= cars[i].car_type_fk.year%>)</h1>
             <br>
+            <i>Reg number: <%=cars[i].reg_no%></i>
             <img src="images/cars/<%= cars[i].car_photo_fk.photo %>" width="200" height="150">
+
             <% if(cars[i].car_rental_fk.accepted) { %>
                 <label style="color:green;font-weight: bold">ACCEPTED</label>
             <% } else { %>
@@ -39,7 +41,7 @@
             <aside>
                 <p><%=new Date(cars[i].car_rental_fk.date_in).toDateString()%>
                  - <%=new Date(cars[i].car_rental_fk.date_out).toDateString()%></p>
-                <form method="post" action="/rentals/modify/<%= cars[i].car_rental_fk.rental_id%>">
+                <form method="post" action="/modify/<%= cars[i].car_rental_fk.rental_id%>">
                     <button style="height:60px;width:100px">Modify</button>
                 </form>
                 <br><form method="post" action="/rentals/cancel/<%= cars[i].car_rental_fk.rental_id%>">

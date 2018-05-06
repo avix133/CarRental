@@ -34,9 +34,9 @@
         <article>
             <form method="post" action="/rent/dates">
                 <label for="receipt_date">Date of receipt:</label>
-                <input type="date" name="receipt_date">
+                <input type="date" name="receipt_date" value=<%=new Date().toISOString().slice(0,10)%>>
                 <label for="return_date"> Date of return:</label>
-                <input type="date" name="return_date">
+                <input type="date" name="return_date" value=<%=new Date().toISOString().slice(0,10)%>>
                 <input type="submit" value="Find">
             </form>
         </article>
