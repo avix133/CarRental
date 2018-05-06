@@ -26,7 +26,14 @@ db.rental = require('./models/rental')(sequelize, Sequelize);
 //Relations
 db.car.belongsTo(db.carType, {as: "car_type_fk", foreignKey: "car_type"});
 db.car.hasOne(db.carPhoto, {as: "car_photo_fk", foreignKey: "car_id"});
+db.car.hasOne(db.rental, {as: "car_rental_fk", foreignKey: "car"});
 db.rental.belongsTo(db.car, {as: "car_fk", foreignKey: "car"});
 
+db.getCars = (function() {
+	return db.car.findAll({
+		include: [{model: db.carType, as: "car_type_fk"},
+			{model: db.carPhoto, as: "car_photo_fk"}]
+	});
+});
 
 module.exports = db;

@@ -37,13 +37,13 @@ VALUES
 INSERT INTO car_photo
 (car_id, photo)
 VALUES
-  (1, "photo1"),
-  (2, "photo2"),
-  (3, "photo3"),
-  (4, "photo4"),
-  (5, "photo5"),
-  (6, "photo6"),
-  (7, "photo7");
+  (1, "photo1.png"),
+  (2, "photo2.png"),
+  (3, "photo3.jpg"),
+  (4, "photo4.png"),
+  (5, "photo5.png"),
+  (6, "photo6.webp"),
+  (7, "photo7.png");
 
 INSERT INTO user
 (name, surname, email, password)

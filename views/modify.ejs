@@ -9,11 +9,6 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script>
-		$(function() {
-			$('#datepick').datepicker();
-		});
-    </script>
 </head>
 <body>
     <header>
@@ -28,16 +23,12 @@
         </nav>
     </header>
     <section>
-        <strong>Cars</strong>
+        <strong>Rented cars</strong>
     </section>
     <section id="pageContent">
-        <% for(var i=0; i < cars.length; i++) { %>
         <article>
-            <h1><%= cars[i].car_type_fk.mark %> <%= cars[i].car_type_fk.model %> (<%= cars[i].car_type_fk.year%>)</h1>
-            <br>
-            <p><img src="images/cars/<%= cars[i].car_photo_fk.photo %>" width="200" height="150"></p>
+
         </article>
-        <% } %>
     </section>
 </body>
 </html>

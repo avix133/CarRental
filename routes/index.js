@@ -6,16 +6,14 @@ var db = require('../db');
 /* GET home page. */
 router.get('/', function(req, res) {
 
-	db.rental.findAll({include: [{model: db.car, as: "car_fk"}]}).then(rentals => {
-		for (var i = 0; i < rentals.length; i++) {
-			console.log("Rental: " + rentals[i].rental_id);
-			console.log("Car no: " + rentals[i].car_fk.reg_no);
-		}
-	});
-
-	res.render('index', { title: 'CarRental' });
+	res.render('index', {title: 'CarRental'});
 });
 
 router.use('/cars', require('./cars'));
+router.use('/rent', require('./rent'));
+router.use('/dates', require('./rent'));
+router.use('/rentals', require('./rentals'));
+router.use('/modify', require('./modify'));
+router.use('/admin', require('./admin'));
 
 module.exports = router;

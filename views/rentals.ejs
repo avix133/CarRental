@@ -9,11 +9,6 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script>
-		$(function() {
-			$('#datepick').datepicker();
-		});
-    </script>
 </head>
 <body>
     <header>
@@ -28,14 +23,29 @@
         </nav>
     </header>
     <section>
-        <strong>Cars</strong>
+        <strong>Rented cars</strong>
     </section>
     <section id="pageContent">
         <% for(var i=0; i < cars.length; i++) { %>
         <article>
             <h1><%= cars[i].car_type_fk.mark %> <%= cars[i].car_type_fk.model %> (<%= cars[i].car_type_fk.year%>)</h1>
             <br>
-            <p><img src="images/cars/<%= cars[i].car_photo_fk.photo %>" width="200" height="150"></p>
+            <img src="images/cars/<%= cars[i].car_photo_fk.photo %>" width="200" height="150">
+            <% if(cars[i].car_rental_fk.accepted) { %>
+                <label style="color:green;font-weight: bold">ACCEPTED</label>
+            <% } else { %>
+                <label style="color:blue">Waiting for confirmation..</label>
+            <% } %>
+            <aside>
+                <p><%=new Date(cars[i].car_rental_fk.date_in).toDateString()%>
+                 - <%=new Date(cars[i].car_rental_fk.date_out).toDateString()%></p>
+                <form method="post" action="/rentals/modify/<%= cars[i].car_rental_fk.rental_id%>">
+                    <button style="height:60px;width:100px">Modify</button>
+                </form>
+                <br><form method="post" action="/rentals/cancel/<%= cars[i].car_rental_fk.rental_id%>">
+                    <button style="height:60px;width:100px;color:red">Cancel</button>
+                </form>
+            </aside>
         </article>
         <% } %>
     </section>

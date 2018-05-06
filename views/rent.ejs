@@ -28,15 +28,31 @@
         </nav>
     </header>
     <section>
-        <strong>Cars</strong>
+        <strong>Rent a car</strong>
     </section>
     <section id="pageContent">
-        <% for(var i=0; i < cars.length; i++) { %>
         <article>
-            <h1><%= cars[i].car_type_fk.mark %> <%= cars[i].car_type_fk.model %> (<%= cars[i].car_type_fk.year%>)</h1>
-            <br>
-            <p><img src="images/cars/<%= cars[i].car_photo_fk.photo %>" width="200" height="150"></p>
+            <form method="post" action="/rent/dates">
+                <label for="receipt_date">Date of receipt:</label>
+                <input type="date" name="receipt_date">
+                <label for="return_date"> Date of return:</label>
+                <input type="date" name="return_date">
+                <input type="submit" value="Find">
+            </form>
         </article>
+        <% for(var i=0; i < cars.length; i++) { %>
+            <article>
+                <h1><%= cars[i].car_type_fk.mark %> <%= cars[i].car_type_fk.model %> (<%= cars[i].car_type_fk.year%>)</h1>
+                <br>
+                        <b><%= cars[i].rate * days%> PLN</b>
+                        (<%= cars[i].rate %> PLN / day)
+                        <img src="images/cars/<%= cars[i].car_photo_fk.photo %>" width="200" height="150">
+                <aside>
+                    <form method="post" action="/rent/car/<%= cars[i].car_id%>">
+                        <button style="height:60px;width:100px">Reserve</button>
+                    </form>
+                </aside>
+            </article>
         <% } %>
     </section>
 </body>
